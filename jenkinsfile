@@ -1,9 +1,17 @@
 pipeline {
     agent any
+
+    tools {
+        nodejs 'node24'
+    }
+
+    options{
+        skipDefaultCheckout()
+    }
     stages {
         stage('Build') {
             steps {
-                echo 'Building...'
+                checkout scm
             }
         }
         stage('Test') {
